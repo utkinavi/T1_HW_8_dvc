@@ -1,18 +1,21 @@
 import os
+import sys
 import yaml
 import pandas as pd
 from sklearn.model_selection import train_test_split
 pd.set_option('future.no_silent_downcasting', True)
 
 def main():
-    params = yaml.safe_load(open("params.yaml"))["preprocessing"]
+    with open('params.yaml', 'r') as file:
+        params = yaml.safe_load(file)["preprocessing"]
+
     size_split = params["split"]
     seed = params["seed"]
 
-    input_file = "data/titanic.csv" #sys.argv[1]
+    input_file = sys.argv[1]
 
-    output_train = os.path.join("data", "prepared", "train.tsv")
-    output_test = os.path.join("data", "prepared", "test.tsv")
+    output_train = os.path.join("data", "prepared", "train.csv")
+    output_test = os.path.join("data", "prepared", "test.csv")
 
     os.makedirs(os.path.join("data", "prepared"), exist_ok=True)
 

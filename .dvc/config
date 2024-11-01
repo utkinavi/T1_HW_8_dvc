@@ -1,5 +1,6 @@
 [core]
     remote = localstore
+    autostage = false
 ['remote "gdrive"']
     url = gdrive://1TcSO73b-zUBDAC3URuACBJonhJcm4hFN
 ['remote "remove"']

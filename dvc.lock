@@ -1,0 +1,23 @@
+schema: '2.0'
+stages:
+  preprocessing:
+    cmd: python preprocessing.py data/titanic.csv
+    deps:
+    - path: data/titanic.csv
+      hash: md5
+      md5: 61fdd54abdbf6a85b778e937122e1194
+      size: 60302
+    - path: preprocessing.py
+      hash: md5
+      md5: cb9bf7ff49d9dcbf463cc172e6fa9d95
+      size: 935
+    params:
+      params.yaml:
+        preprocessing.seed: 2024
+        preprocessing.split: 0.2
+    outs:
+    - path: data/prepared
+      hash: md5
+      md5: 71f67837843aaaf4a6c6b7782dcee008.dir
+      size: 13556
+      nfiles: 2

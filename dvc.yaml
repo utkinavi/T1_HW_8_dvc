@@ -1,11 +1,20 @@
 stages:
   preprocessing:
-    cmd: python preprocess.py data/titanic.csv
+    cmd: python preprocessing.py data/titanic.csv
     deps:
     - data/titanic.csv
     - preprocessing.py
     outs:
     - data/prepared
     params:
-    - params.seed
-    - params.split
+    - preprocessing.seed
+    - preprocessing.split
+  featurize:
+    cmd: python features.py data/prepared data/features
+    deps:
+    - data/prepared
+    - featurize.py
+    params:
+    - featurize.seed
+    outs:
+    - data/features

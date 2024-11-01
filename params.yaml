@@ -1,3 +1,6 @@
 preprocessing:
   split: 0.2
   seed: 2024
+
+featurize:
+  seed: 2024
