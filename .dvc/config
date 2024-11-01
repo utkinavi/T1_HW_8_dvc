@@ -1,0 +1,8 @@
+[core]
+    remote = localstore
+['remote "gdrive"']
+    url = gdrive://1TcSO73b-zUBDAC3URuACBJonhJcm4hFN
+['remote "remove"']
+    url = ../gdrive
+['remote "localstore"']
+    url = ../tmp/remotedata

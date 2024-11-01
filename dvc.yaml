@@ -1,0 +1,11 @@
+stages:
+  preprocessing:
+    cmd: python preprocess.py data/titanic.csv
+    deps:
+    - data/titanic.csv
+    - preprocessing.py
+    outs:
+    - data/prepared
+    params:
+    - params.seed
+    - params.split
