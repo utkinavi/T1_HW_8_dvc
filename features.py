@@ -1,5 +1,6 @@
 import os
 import sys
+import yaml
 import pandas as pd
 
 def read_df(path):
@@ -46,4 +47,6 @@ def main():
     generate_feature_and_save_train(input_train, output_train)
     generate_feature_and_save_test(input_test, output_test)
 
+if __name__ == "__main__":
+    main()
 

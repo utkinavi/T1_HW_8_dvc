@@ -13,8 +13,6 @@ stages:
     cmd: python features.py data/prepared data/features
     deps:
     - data/prepared
-    - featurize.py
+    - features.py
     params:
     - featurize.seed
-    outs:
-    - data/features

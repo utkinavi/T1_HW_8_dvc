@@ -9,7 +9,7 @@ stages:
       size: 60302
     - path: preprocessing.py
       hash: md5
-      md5: cb9bf7ff49d9dcbf463cc172e6fa9d95
+      md5: f5a510d07eb050d9cb949543c8146c5c
       size: 935
     params:
       params.yaml:
@@ -18,6 +18,21 @@ stages:
     outs:
     - path: data/prepared
       hash: md5
-      md5: 71f67837843aaaf4a6c6b7782dcee008.dir
+      md5: 4759dd7060da23732b7bae6952ab48dd.dir
       size: 13556
       nfiles: 2
+  featurize:
+    cmd: python features.py data/prepared data/features
+    deps:
+    - path: data/prepared
+      hash: md5
+      md5: 4759dd7060da23732b7bae6952ab48dd.dir
+      size: 13556
+      nfiles: 2
+    - path: features.py
+      hash: md5
+      md5: 37a3bd9da61d19056b9a0673833e2436
+      size: 1177
+    params:
+      params.yaml:
+        featurize.seed: 2024
