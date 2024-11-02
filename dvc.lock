@@ -9,8 +9,8 @@ stages:
       size: 60302
     - path: preprocessing.py
       hash: md5
-      md5: f5a510d07eb050d9cb949543c8146c5c
-      size: 935
+      md5: 37b712a0b1e8d6d998b0c1b7ce162af7
+      size: 987
     params:
       params.yaml:
         preprocessing.seed: 2024
@@ -18,21 +18,46 @@ stages:
     outs:
     - path: data/prepared
       hash: md5
-      md5: 4759dd7060da23732b7bae6952ab48dd.dir
-      size: 13556
+      md5: 0aae129b5a9028cdf17804e28cab14b0.dir
+      size: 14272
       nfiles: 2
   featurize:
     cmd: python features.py data/prepared data/features
     deps:
     - path: data/prepared
       hash: md5
-      md5: 4759dd7060da23732b7bae6952ab48dd.dir
-      size: 13556
+      md5: 0aae129b5a9028cdf17804e28cab14b0.dir
+      size: 14272
       nfiles: 2
     - path: features.py
       hash: md5
-      md5: 37a3bd9da61d19056b9a0673833e2436
-      size: 1177
+      md5: fb152aa05f7c33add7b4cd1eb081e208
+      size: 1296
     params:
       params.yaml:
         featurize.seed: 2024
+  train:
+    cmd: python train.py data/features data/model
+    deps:
+    - path: data/prepared
+      hash: md5
+      md5: 0aae129b5a9028cdf17804e28cab14b0.dir
+      size: 14272
+      nfiles: 2
+    - path: train.py
+      hash: md5
+      md5: 8a26ba13f949681f9bdf7877ed208ef6
+      size: 1440
+    params:
+      params.yaml:
+        train:
+          max_depth: 9
+          min_child_weight: 3
+          eta: 0.004658536774843258
+          gamma: 0.0010325021635031145
+    outs:
+    - path: data/model
+      hash: md5
+      md5: 084081ce1a41158de6e5f63f7c8ec42e.dir
+      size: 275825
+      nfiles: 1

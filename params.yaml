@@ -4,3 +4,9 @@ preprocessing:
 
 featurize:
   seed: 2024
+
+train: 
+  max_depth: 9
+  min_child_weight: 3
+  eta: 0.004658536774843258
+  gamma: 0.0010325021635031145

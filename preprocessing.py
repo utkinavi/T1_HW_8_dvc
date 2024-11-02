@@ -2,6 +2,7 @@ import os
 import sys
 import yaml
 import pandas as pd
+from pathlib import Path
 from sklearn.model_selection import train_test_split
 pd.set_option('future.no_silent_downcasting', True)
 
@@ -14,10 +15,12 @@ def main():
 
     input_file = sys.argv[1]
 
-    output_train = os.path.join("data", "prepared", "train.csv")
-    output_test = os.path.join("data", "prepared", "test.csv")
+    dirs_path = Path().cwd() / "data" / "prepared"
+    output_train = dirs_path / "train.csv"
+    output_test = dirs_path / "test.csv"
 
-    os.makedirs(os.path.join("data", "prepared"), exist_ok=True)
+    
+    os.makedirs(dirs_path, exist_ok=True)
 
     df = pd.read_csv(input_file)
     df['Sex'] = df['Sex'].replace({'male': 0, 'female': 1})

@@ -16,3 +16,12 @@ stages:
     - features.py
     params:
     - featurize.seed
+  train:
+    cmd: python train.py data/features data/model
+    deps:
+    - data/prepared
+    - train.py
+    params:
+    - train
+    outs:
+    - data/model

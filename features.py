@@ -1,6 +1,7 @@
 import os
 import sys
 import yaml
+from pathlib import Path
 import pandas as pd
 
 def read_df(path):
@@ -37,10 +38,13 @@ def main():
     input_path = sys.argv[1]
     output_path = sys.argv[2]
 
-    input_train = os.path.join(input_path, "train.csv")
-    input_test = os.path.join(input_path, "test.csv")
-    output_train = os.path.join(output_path, "train.pkl")
-    output_test = os.path.join(output_path, "test.pkl")
+    input_path = Path().cwd() / input_path
+    output_path = Path().cwd() / output_path
+
+    input_train = input_path / "train.csv"
+    input_test = input_path / "test.csv"
+    output_train = output_path / "train.pkl"
+    output_test = output_path /  "test.pkl"
 
     os.makedirs(output_path, exist_ok=True)
 
